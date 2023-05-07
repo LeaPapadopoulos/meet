@@ -1,77 +1,98 @@
-Feature: Show/hide event details
+# Feature 1: Filter events by city
 
-As a user,
-I should be able to show/hide an event's details
-So that I can view or hide the information I need.
+**`As a user`,<br>
+`I should be able to` filter events by city<br>
+`So that` I can see the list of events that take place in that city**
 
-Scenario: Expand and collapse event details
+- Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities
+  - `Given` user hasn’t searched for any city
+  - `When` the user opens the app
+  - `Then` the user should see a list of all upcoming events
+- Scenario 2: User should see a list of suggestions when they search for a city
+  - `Given` the main page is open
+  - `When` user starts typing in the city textbox
+  - `Then` the user should see a list of cities (suggestions) that match what they’ve typed
+- Scenario 3: User can select a city from the suggested list.
+  - `Given` the user was typing “Berlin” in the city textbox
+  - `And` the list of suggested cities is showing
+  - `When` the user selects a city (e.g., “Berlin, Germany”) from the list
+  - `Then` their city should be changed to that city (i.e., “Berlin, Germany”)
+  - `And` the user should receive a list of upcoming events in that city
 
-    Given I am on the events page
-    And an event element is collapsed by default
-    When I click on the event element
-    Then the event details should be visible
-    And the event element should be expanded
+# Feature 2: Show/hide event details
 
-    When I click on the event element again
-    Then the event details should be hidden
-    And the event element should be collapsed
+**`As a user`,<br>
+`I should be able to` show/hide an event's details<br>
+`So that` I can view or hide the information I need.**
 
-Feature: Specify number of events
+- Scenario 1: An event element is collapsed by default
+  - `Given` The app is opened
+  - `When` Events are displayed
+  - `Then` Events details are collapsed by default
+- Scenario 2: User can expand an event to see its details
+  - `Given` The app is opened
+  - `And` an event details is collapsed by default
+  - `When` I click on the event's "show details" button
+  - `Then` the event details should be visible
+  - `And` and the "show details" button text will be changed to "hide details"
+- Scenario 3: User can collapse an event to hide its details
+  - `Given` The app is opened
+  - `And` an event details is visible
+  - `When` I click on the event's "hide details" button
+  - `Then` the event details should be collapsed
+  - `And` and the "hide details" button text will be changed to "show details"
 
-As a user,
-I should be able to specify the number of events I want to see
-So that I can control the amount of information I see on the page.
 
-Scenario: Change number of events
 
-    Given I am on the events page
-    And the default number of events is 32
-    When I specify that I want to see 50 events
-    Then the page should reload
-    And I should see 50 events on the page
-    And there should be a way to go to the next page of events
+# Feature 3: Specify number of events
 
-    When I specify that I want to see 10 events
-    Then the page should reload
-    And I should see 10 events on the page
-    And there should be a way to go to the next page of events
+**`As a user`,<br>
+`I should be able to` specify the number of events I want to see<br>
+`So that` I can control the amount of information I see on the page**
 
-Feature: Use the app when offline
+- Scenario 1: When user hasn’t specified a number, 32 is the default number
+  - `Given` user wants to specify a number of event
+  - `When`  user hasn’t specify a number
+  - `Then` the default 32 number should be selected
+- Scenario 2: User can change the number of events they want to see
+  - `Given` the main page is open
+  - `When` user changes number of events
+  - `Then` the user should see the number of events selected
 
-As a user,
-I should be able to use the app when offline
-So that I can continue to access cached data and stay productive.
 
-Scenario: Show cached data and display error message when offline
+# Feature 4: Use the app when offline
 
-    Given I have used the app before and have some data cached
-    And I have no internet connection
-    When I open the app
-    Then the app should show me the cached data
-    And there should be a message indicating that I'm offline
+**`As a user`,<br>
+`I should be able to` use the app when offline<br>
+`So that` I can continue to access cached data and stay productive.**
 
-    When I try to change the settings (e.g. city or time range)
-    And I'm still offline
-    Then the app should display an error message saying I need to be online to make changes
+- Scenario 1: Show cached data when there’s no internet connection
+  - `Given` I have used the app before and have some data cached
+  - `When` I have no internet connection
+  - `Then` the app should show me the cached data
+- Scenario 2: Show error when user changes the settings (city, time range)
+  - `Given` I have used the app before and have some data cached
+  - `And` I have no internet connection
+  - `When` I try to change the settings (e.g. city or time range)
+  - `Then` the app should display an error message saying I need to be online to make changes
+  
 
-Feature: Data visualisation
 
-    As a user,
-    I should be able to view a chart with the number of upcoming events in each city
-    So that I can easily identify the most active cities and plan my schedule accordingly.
 
-Scenario: Show a chart with the number of upcoming events in each city
+# Feature 5: Data visualisation
 
-    Given I am on the homepage of the app
-    When I select the "Upcoming Events" option from the menu
-    Then the app should display a chart with the number of upcoming events in each city
-    And the chart should show the number of events for at least the top 10 cities by default
+**`As a user`,<br>
+`I should be able to` view a chart with the number of upcoming events in each city<br>
+`So that` I can easily identify the most active cities and plan my schedule accordingly.**
 
-    Given I am viewing the chart of the upcoming events
-    When I hover over a data point on the chart
-    Then the app should display the city name and the number of events in a tooltip
+- Scenario 1:  Show a chart with the number of upcoming events in each city
 
-    Given I am viewing the chart of the upcoming events
-    When I click on a data point on the chart
-    Then the app should take me to the list of events for that city
-    And the list should be sorted by the event date and time, with the nearest events appearing first.
+  - `Given` I am on the homepage of the app
+  - `When` I select the "Upcoming Events" option from the menu
+  - `Then` the app should display a chart with the number of upcoming events in each city
+
+
+
+
+
+
