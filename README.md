@@ -42,8 +42,6 @@
   - `Then` the event details should be collapsed
   - `And` and the "hide details" button text will be changed to "show details"
 
-
-
 # Feature 3: Specify number of events
 
 **`As a user`,<br>
@@ -52,13 +50,12 @@
 
 - Scenario 1: When user hasn’t specified a number, 32 is the default number
   - `Given` user wants to specify a number of event
-  - `When`  user hasn’t specify a number
+  - `When` user hasn’t specify a number
   - `Then` the default 32 number should be selected
 - Scenario 2: User can change the number of events they want to see
   - `Given` the main page is open
   - `When` user changes number of events
   - `Then` the user should see the number of events selected
-
 
 # Feature 4: Use the app when offline
 
@@ -75,9 +72,6 @@
   - `And` I have no internet connection
   - `When` I try to change the settings (e.g. city or time range)
   - `Then` the app should display an error message saying I need to be online to make changes
-  
-
-
 
 # Feature 5: Data visualisation
 
@@ -85,14 +79,12 @@
 `I should be able to` view a chart with the number of upcoming events in each city<br>
 `So that` I can easily identify the most active cities and plan my schedule accordingly.**
 
-- Scenario 1:  Show a chart with the number of upcoming events in each city
+- Scenario 1: Show a chart with the number of upcoming events in each city
 
   - `Given` I am on the homepage of the app
   - `When` I select the "Upcoming Events" option from the menu
   - `Then` the app should display a chart with the number of upcoming events in each city
 
+Serverless:
 
-
-
-
-
+No backend maintenance, easy to scale, always available, no cost for idle time.
