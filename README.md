@@ -87,4 +87,5 @@
 
 Serverless:
 
-No backend maintenance, easy to scale, always available, no cost for idle time.
+Will be used to send authentication/Authorization requests to Gmail, and eventually receive the access token
+use this access token to retrieve events from the Google Calendar API and send them back to the react meet app (to display them over there)
