@@ -1,17 +1,16 @@
 {
-  "files": {
-    "main.css": "/meet/static/css/main.073c9b0a.css",
-    "main.js": "/meet/static/js/main.1173e3cc.js",
-    "static/js/787.4b564826.chunk.js": "/meet/static/js/787.4b564826.chunk.js",
-    "service-worker.js": "/meet/service-worker.js",
-    "static/media/logo.svg": "/meet/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
-    "index.html": "/meet/index.html",
-    "main.073c9b0a.css.map": "/meet/static/css/main.073c9b0a.css.map",
-    "main.1173e3cc.js.map": "/meet/static/js/main.1173e3cc.js.map",
-    "787.4b564826.chunk.js.map": "/meet/static/js/787.4b564826.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.1173e3cc.js"
-  ]
+  "main.css": "/meet/static/css/main.45196d28.chunk.css",
+  "main.js": "/meet/static/js/main.4d994601.chunk.js",
+  "main.js.map": "/meet/static/js/main.4d994601.chunk.js.map",
+  "static/js/1.3c11774c.chunk.js": "/meet/static/js/1.3c11774c.chunk.js",
+  "static/js/1.3c11774c.chunk.js.map": "/meet/static/js/1.3c11774c.chunk.js.map",
+  "static/js/2.6422faee.chunk.js": "/meet/static/js/2.6422faee.chunk.js",
+  "static/js/2.6422faee.chunk.js.map": "/meet/static/js/2.6422faee.chunk.js.map",
+  "runtime~main.js": "/meet/static/js/runtime~main.a2809775.js",
+  "runtime~main.js.map": "/meet/static/js/runtime~main.a2809775.js.map",
+  "static/media/logo.svg": "/meet/static/media/logo.5d5d9eef.svg",
+  "static/css/main.45196d28.chunk.css.map": "/meet/static/css/main.45196d28.chunk.css.map",
+  "index.html": "/meet/index.html",
+  "precache-manifest.bfe35dd3bf4d48312d22e8dce63bf1ab.js": "/meet/precache-manifest.bfe35dd3bf4d48312d22e8dce63bf1ab.js",
+  "service-worker.js": "/meet/service-worker.js"
 }
