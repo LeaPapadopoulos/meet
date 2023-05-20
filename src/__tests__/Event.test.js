@@ -37,18 +37,25 @@ describe("<Event /> component", () => {
     expect(EventWrapper.state("collapsed")).toBe(true);
   });
 
-  test("renders and expands details when clicking show details", () => {
+  test("renders when show details collapsed", () => {
     const detailsButton = EventWrapper.find("button.details-button");
+
     expect(detailsButton).toHaveLength(1);
     expect(detailsButton.text()).toBe("show details");
-
     expect(EventWrapper.state("collapsed")).toBe(true);
-
-    detailsButton.simulate("click");
-    expect(EventWrapper.state("collapsed")).toBe(false);
   });
 
-  test("collapses details when clicking hide details", () => {
+  test("renders and expands details when clicking show details", () => {
+    EventWrapper.setState({ collapsed: false });
+    const detailsButton = EventWrapper.find("button.details-button");
+    const eventDetails = EventWrapper.find("div.event-details");
+
+    expect(EventWrapper.state("collapsed")).toBe(false);
+    expect(detailsButton.text()).toBe("hide details");
+    expect(eventDetails).toHaveLength(1);
+  });
+
+  test("view details", () => {
     EventWrapper.setState({ collapsed: false });
 
     const detailsButton = EventWrapper.find("button.details-button");
@@ -64,8 +71,15 @@ describe("<Event /> component", () => {
     expect(link.prop("href")).toBe(event.htmlLink);
     expect(description).toHaveLength(1);
     expect(description.text()).toBe(event.description);
+  });
 
-    detailsButton.simulate("click");
+  test("collapses details when clicking hide details", () => {
+    EventWrapper.setState({ collapsed: true });
+    const detailsButton = EventWrapper.find("button.details-button");
+    const eventDetails = EventWrapper.find("div.event-details");
+
     expect(EventWrapper.state("collapsed")).toBe(true);
+    expect(detailsButton.text()).toBe("show details");
+    expect(eventDetails).toHaveLength(0);
   });
 });
