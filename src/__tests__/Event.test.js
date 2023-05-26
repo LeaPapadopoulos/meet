@@ -11,7 +11,7 @@ describe("<Event /> component", () => {
     EventWrapper = shallow(<Event event={event} />);
   });
 
-  test("renders the  component", () => {
+  test("renders the component", () => {
     expect(EventWrapper).toBeDefined();
   });
 
@@ -81,5 +81,16 @@ describe("<Event /> component", () => {
     expect(EventWrapper.state("collapsed")).toBe(true);
     expect(detailsButton.text()).toBe("show details");
     expect(eventDetails).toHaveLength(0);
+  });
+
+  test("collapses details when clicking hide details", () => {
+    EventWrapper.setState({ collapsed: true });
+    const detailsButton = EventWrapper.find("button.details-button");
+
+    detailsButton.simulate("click"); // Simulate the click event
+
+    expect(EventWrapper.state("collapsed")).toBe(false);
+    expect(detailsButton.text()).toBe("show details");
+    expect(EventWrapper.find("div.event-details")).toHaveLength(1);
   });
 });

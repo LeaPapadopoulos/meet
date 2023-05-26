@@ -1,8 +1,10 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
+import App from "../App";
 import NumberOfEvents from "../NumberOfEvents";
+import EventList from "../EventList";
 
-describe("<NumberOfEvents />", () => {
+describe("<NumberOfEvents /> component", () => {
   let NumberOfEventsWrapper, noeInput;
   beforeAll(() => {
     NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}} />);
@@ -23,5 +25,30 @@ describe("<NumberOfEvents />", () => {
     expect(NumberOfEventsWrapper.state("query")).toBe(32);
     noeInput.simulate("change", { target: { value: 15 } });
     expect(NumberOfEventsWrapper.state("query")).toBe(15);
+  });
+});
+
+describe("<NumberOfEvents /> integration", () => {
+  let AppWrapper;
+  beforeAll(() => {
+    AppWrapper = mount(<App />);
+  });
+
+  test("render NumberOfEvents component", () => {
+    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
+  });
+
+  test("render EventList component", () => {
+    expect(AppWrapper.find(EventList)).toHaveLength(1);
+  });
+
+  test("update state and events when number of events changes", () => {
+    const numberOfEvents = 3;
+    AppWrapper.find(NumberOfEvents).setState({ query: numberOfEvents });
+    AppWrapper.find(NumberOfEvents)
+      .find("input.numberOfEvents")
+      .simulate("change", { target: { value: numberOfEvents } });
+    expect(AppWrapper.find(NumberOfEvents).state("query")).toBe(numberOfEvents);
+    expect(AppWrapper.state("events")).toHaveLength(numberOfEvents);
   });
 });
