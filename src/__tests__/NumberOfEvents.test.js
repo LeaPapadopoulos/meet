@@ -8,7 +8,7 @@ describe("<NumberOfEvents /> component", () => {
   let NumberOfEventsWrapper, noeInput;
   beforeAll(() => {
     NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}} />);
-    noeInput = NumberOfEventsWrapper.find("input.numberOfEvents");
+    noeInput = NumberOfEventsWrapper.find("input.numEvents");
   });
 
   test("<NumberOfEvents /> and noe-input are both rendered", () => {
@@ -46,7 +46,7 @@ describe("<NumberOfEvents /> integration", () => {
     const numberOfEvents = 3;
     AppWrapper.find(NumberOfEvents).setState({ query: numberOfEvents });
     AppWrapper.find(NumberOfEvents)
-      .find("input.numberOfEvents")
+      .find("input.numEvents")
       .simulate("change", { target: { value: numberOfEvents } });
     expect(AppWrapper.find(NumberOfEvents).state("query")).toBe(numberOfEvents);
     expect(AppWrapper.state("events")).toHaveLength(numberOfEvents);
