@@ -73,7 +73,7 @@ describe("<Event /> component", () => {
     expect(description.text()).toBe(event.description);
   });
 
-  test("collapses details when clicking hide details", () => {
+  test("collapses details when collapsed hide details", () => {
     EventWrapper.setState({ collapsed: true });
     const detailsButton = EventWrapper.find("button.details-button");
     const eventDetails = EventWrapper.find("div.event-details");
