@@ -10,7 +10,7 @@ Given The app is opened
 And an event details is collapsed by default
 When I click on the event's "show details" button
 Then the event details should be visible
-And and the "show details" button text will be changed to "hide details"
+And the "show details" button text will be changed to "hide details"
 
 Scenario: User can collapse an event to hide its details
 Given The app is opened
