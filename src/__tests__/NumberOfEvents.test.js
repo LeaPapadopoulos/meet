@@ -2,7 +2,6 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import App from "../App";
 import NumberOfEvents from "../NumberOfEvents";
-import EventList from "../EventList";
 
 describe("<NumberOfEvents /> component", () => {
   let NumberOfEventsWrapper, noeInput;
@@ -36,10 +35,6 @@ describe("<NumberOfEvents /> integration", () => {
 
   test("render NumberOfEvents component", () => {
     expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
-  });
-
-  test("render EventList component", () => {
-    expect(AppWrapper.find(EventList)).toHaveLength(1);
   });
 
   test("update state and events when number of events changes", () => {

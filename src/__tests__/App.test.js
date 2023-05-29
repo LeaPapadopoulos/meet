@@ -63,6 +63,12 @@ test('get list of all events when user selects "See all cities"', async () => {
 });
 
 describe("<App /> integration", () => {
+  test("render EventList component", () => {
+    const AppWrapper = mount(<App />);
+    expect(AppWrapper.find(EventList)).toHaveLength(1);
+    AppWrapper.unmount();
+  });
+
   test('App passes "events" state as a prop to EventList', () => {
     const AppWrapper = mount(<App />);
     const AppEventsState = AppWrapper.state("events");
