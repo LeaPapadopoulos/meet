@@ -32,7 +32,7 @@ class NumberOfEvents extends Component {
       <div className="numberOfEvents">
         <input
           type="number"
-          className="numberOfEvents"
+          className="numEvents"
           min={1}
           max={32}
           value={this.state.query}
