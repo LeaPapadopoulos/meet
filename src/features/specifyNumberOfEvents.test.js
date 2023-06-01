@@ -42,6 +42,7 @@ defineFeature(feature, (test) => {
     then("the user should see the number of events selected", () => {
       AppWrapper.update();
       expect(AppWrapper.state("numberOfEvents")).toEqual(1);
+      expect(AppWrapper.find(".event")).toHaveLength(1);
     });
   });
 });
