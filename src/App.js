@@ -56,14 +56,9 @@ class App extends Component {
   render() {
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
+
     return (
       <div className="App">
-        <WelcomeScreen
-          showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => {
-            getAccessToken();
-          }}
-        />
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
@@ -73,6 +68,12 @@ class App extends Component {
           selectedCity={this.state.selectedCity}
         />
         <EventList events={this.state.events} />
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
+        />
       </div>
     );
   }
