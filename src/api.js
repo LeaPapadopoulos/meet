@@ -2,7 +2,7 @@ import { mockData } from "./mock-data";
 import axios from "axios";
 import NProgress from "nprogress";
 
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
@@ -11,6 +11,8 @@ const checkToken = async (accessToken) => {
 
   return result;
 };
+
+
 
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
@@ -44,12 +46,20 @@ const getToken = async (code) => {
   }
 };
 
+
 export const getEvents = async () => {
   NProgress.start();
 
   if (window.location.href.startsWith("http://localhost")) {
     NProgress.done();
     return mockData;
+  }
+
+  if (!navigator.onLine) {
+    const data = localStorage.getItem("lastEvents");
+    NProgress.done();
+    console.log("offline data: ", data);
+    return data ? JSON.parse(data).events : [];
   }
 
   const token = await getAccessToken();
