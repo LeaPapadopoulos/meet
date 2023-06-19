@@ -19,14 +19,25 @@ class App extends Component {
   async componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem("access_token");
-    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const isTokenValid =
+      !window.location.href.startsWith("http://localhost") &&
+      !(accessToken && !navigator.onLine) &&
+      (await checkToken(accessToken)).error
+        ? false
+        : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
-    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-    if ((code || isTokenValid) && this.mounted) {
+    const byPassWelcomeScreen = code || isTokenValid;
+
+    this.setState({ showWelcomeScreen: !byPassWelcomeScreen });
+
+    if (byPassWelcomeScreen) {
       getEvents().then((events) => {
         if (this.mounted) {
-          this.setState({ events, locations: extractLocations(events) });
+          this.setState({
+            events: events.slice(0, 32),
+            locations: extractLocations(events),
+          });
         }
       });
     }
@@ -56,26 +67,29 @@ class App extends Component {
   render() {
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
-
-    return (
-      <div className="App">
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents
-          updateEvents={this.updateEvents}
-          selectedCity={this.state.selectedCity}
-        />
-        <EventList events={this.state.events} />
+    else if (this.state.showWelcomeScreen)
+      return (
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
             getAccessToken();
           }}
         />
-      </div>
-    );
+      );
+    else
+      return (
+        <div className="App">
+          <CitySearch
+            locations={this.state.locations}
+            updateEvents={this.updateEvents}
+          />
+          <NumberOfEvents
+            updateEvents={this.updateEvents}
+            selectedCity={this.state.selectedCity}
+          />
+          <EventList events={this.state.events} />
+        </div>
+      );
   }
 }
 
