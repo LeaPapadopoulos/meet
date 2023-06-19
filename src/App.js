@@ -6,6 +6,7 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import WelcomeScreen from "./WelcomeScreen";
 import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
+import { InfoAlert } from "./Alert";
 
 class App extends Component {
   state = {
@@ -14,6 +15,7 @@ class App extends Component {
     numberOfEvents: 32,
     selectedCity: null,
     showWelcomeScreen: undefined,
+    infoText: "",
   };
 
   async componentDidMount() {
@@ -61,6 +63,12 @@ class App extends Component {
         numberOfEvents,
         selectedCity: location,
       });
+
+      if (!navigator.onLine) {
+        this.setState({
+          infoText: "App runnin in offline mode",
+        });
+      }
     });
   };
 
@@ -79,6 +87,7 @@ class App extends Component {
     else
       return (
         <div className="App">
+          <InfoAlert text={this.state.infoText} />
           <CitySearch
             locations={this.state.locations}
             updateEvents={this.updateEvents}
