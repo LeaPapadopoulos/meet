@@ -78,6 +78,10 @@ class App extends Component {
         this.setState({
           infoText: "App runnin in offline mode",
         });
+      } else {
+        this.setState({
+          infoText: "",
+        });
       }
     });
   };
