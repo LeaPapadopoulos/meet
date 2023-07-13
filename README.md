@@ -1,92 +1,116 @@
-# Feature 1: Filter events by city
+# Meet
 
-**`As a user`,<br>
-`I should be able to` filter events by city<br>
-`So that` I can see the list of events that take place in that city**
+Meet is a React application that allows users to search for events, view event details, and visualize the number of upcoming events in each city. It integrates with the Google Calendar API to retrieve event data.
 
-- Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities
-  - `Given` user hasn’t searched for any city
-  - `When` the user opens the app
-  - `Then` the user should see a list of all upcoming events
-- Scenario 2: User should see a list of suggestions when they search for a city
-  - `Given` the main page is open
-  - `When` user starts typing in the city textbox
-  - `Then` the user should see a list of cities (suggestions) that match what they’ve typed
-- Scenario 3: User can select a city from the suggested list.
-  - `Given` user was typing “Berlin” in the city textbox
-  - `And` the list of suggested cities is showing
-  - `When` the user selects a city (e.g., “Berlin, Germany”) from the list
-  - `Then` their city should be changed to that city (i.e., “Berlin, Germany”)
-  - `And` the list of suggestions should disappear.
-  - `And` the user should receive a list of upcoming events in that city.
+## Installation and Setup
 
-# Feature 2: Show/hide event details
+1. Clone the repository.
+2. Run `npm install` to install the dependencies.
+3. Run `npm start` to start the application.
+4. Navigate to `http://localhost:3000` in your browser.
 
-**`As a user`,<br>
-`I should be able to` show/hide an event's details<br>
-`So that` I can view or hide the information I need.**
+## Features
 
-- Scenario 1: An event element is collapsed by default
-  - `Given` The app is opened
-  - `When` Events are displayed
-  - `Then` Events details are collapsed by default
-- Scenario 2: User can expand an event to see its details
-  - `Given` The app is opened
-  - `And` an event details is collapsed by default
-  - `When` I click on the event's "show details" button
-  - `Then` the event details should be visible
-  - `And` and the "show details" button text will be changed to "hide details"
-- Scenario 3: User can collapse an event to hide its details
-  - `Given` The app is opened
-  - `And` an event details is visible
-  - `When` I click on the event's "hide details" button
-  - `Then` the event details should be collapsed
-  - `And` and the "hide details" button text will be changed to "show details"
+### Feature 1: Filter events by city
 
-# Feature 3: Specify number of events
+As a user, I should be able to filter events by city, so that I can see the list of events that take place in that city.
 
-**`As a user`,<br>
-`I should be able to` specify the number of events I want to see<br>
-`So that` I can control the amount of information I see on the page**
+- Scenario 1: When the user hasn't searched for a city, show upcoming events from all cities.
+- Scenario 2: User should see a list of suggestions when they search for a city.
+- Scenario 3: User can select a city from the suggested list and receive a list of upcoming events in that city.
 
-- Scenario 1: When user hasn’t specified a number, 32 is the default number
-  - `Given` user wants to specify a number of event
-  - `When` user hasn’t specify a number
-  - `Then` the default 32 number should be selected
-- Scenario 2: User can change the number of events they want to see
-  - `Given` the main page is open
-  - `When` user changes number of events
-  - `Then` the user should see the number of events selected
+### Feature 2: Show/hide event details
 
-# Feature 4: Use the app when offline
+As a user, I should be able to show/hide an event's details, so that I can view or hide the information I need.
 
-**`As a user`,<br>
-`I should be able to` use the app when offline<br>
-`So that` I can continue to access cached data and stay productive.**
+- Scenario 1: An event element is collapsed by default.
+- Scenario 2: User can expand an event to see its details.
+- Scenario 3: User can collapse an event to hide its details.
 
-- Scenario 1: Show cached data when there’s no internet connection
-  - `Given` I have used the app before and have some data cached
-  - `When` I have no internet connection
-  - `Then` the app should show me the cached data
-- Scenario 2: Show error when user changes the settings (city, time range)
-  - `Given` I have used the app before and have some data cached
-  - `And` I have no internet connection
-  - `When` I try to change the settings (e.g. city or time range)
-  - `Then` the app should display an error message saying I need to be online to make changes
+### Feature 3: Specify the number of events
 
-# Feature 5: Data visualisation
+As a user, I should be able to specify the number of events I want to see, so that I can control the amount of information I see on the page.
 
-**`As a user`,<br>
-`I should be able to` view a chart with the number of upcoming events in each city<br>
-`So that` I can easily identify the most active cities and plan my schedule accordingly.**
+- Scenario 1: When the user hasn't specified a number, 32 is the default number.
+- Scenario 2: User can change the number of events they want to see.
 
-- Scenario 1: Show a chart with the number of upcoming events in each city
+### Feature 4: Use the app when offline
 
-  - `Given` I am on the homepage of the app
-  - `When` I select the "Upcoming Events" option from the menu
-  - `Then` the app should display a chart with the number of upcoming events in each city
+As a user, I should be able to use the app when offline, so that I can continue to access cached data and stay productive.
 
-Serverless:
+- Scenario 1: Show cached data when there's no internet connection.
+- Scenario 2: Show an error when the user changes the settings (city, time range) without an internet connection.
 
-Will be used to send authentication/Authorization requests to Gmail, and eventually receive the access token
-use this access token to retrieve events from the Google Calendar API and send them back to the react meet app (to display them over there)
+### Feature 5: Data visualization
+
+As a user, I should be able to view a chart with the number of upcoming events in each city, so that I can easily identify the most active cities and plan my schedule accordingly.
+
+- Scenario 1: Show a chart with the number of upcoming events in each city.
+
+## Technologies Used
+
+- React
+- Google Calendar API
+- Recharts
+- Axios
+
+## Dependencies
+
+The following dependencies are required to run the application:
+
+- @testing-library/jest-dom
+- @testing-library/react
+- @testing-library/user-event
+- atatus-spa
+- axios
+- fsevents
+- googleapis
+- nprogress
+- react
+- react-dom
+- react-scripts
+- recharts
+- semver
+- watchman
+- web-vitals
+- workbox-background-sync
+- workbox-broadcast-update
+- workbox-cacheable-response
+- workbox-core
+- workbox-expiration
+- workbox-google-analytics
+- workbox-navigation-preload
+- workbox-precaching
+- workbox-range-requests
+- workbox-routing
+- workbox-strategies
+- workbox-streams
+
+## Development Dependencies
+
+The following dev dependencies are required for development purposes:
+
+- @wojtekmaj/enzyme-adapter-react-17
+- enzyme
+- gh-pages
+- jest-cucumber
+- puppeteer
+
+## Serverless:
+
+- Will be used to send authentication/Authorization requests to Gmail, and eventually receive the access token
+- Use this access token to retrieve events from the Google Calendar API and send them back to the react meet app (to display them over there)
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes and commit them.
+4. Push your changes to your forked repository.
+5. Submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
