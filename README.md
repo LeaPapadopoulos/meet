@@ -2,6 +2,16 @@
 
 Meet is a React application that allows users to search for events, view event details, and visualize the number of upcoming events in each city. It integrates with the Google Calendar API to retrieve event data.
 
+## Demo App
+
+You can see a demo app [here](https://leapapadopoulos.github.io/meet/)
+
+## App Screenshots
+
+![Charts](demo_screen1.png)
+![London_Events](demo_screen2.png)
+![Event_Details](demo_screen3.png)
+
 ## Installation and Setup
 
 1. Clone the repository.
