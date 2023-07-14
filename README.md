@@ -63,6 +63,9 @@ As a user, I should be able to view a chart with the number of upcoming events i
 - Google Calendar API
 - Recharts
 - Axios
+- AWS Lambda 
+- Serverless Functions
+- OAuth2
 
 ## Dependencies
 
